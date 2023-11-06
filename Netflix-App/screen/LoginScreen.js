@@ -71,22 +71,22 @@ const LoginScreen = () => {
           style={
             password.length > 4
               ? {
-                  backgroundColor: "red",
-                  width: 350,
-                  marginLeft: "10px",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  padding: 20,
-                }
+                backgroundColor: "red",
+                width: 350,
+                marginLeft: "10px",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: 20,
+              }
               : {
-                  width: 350,
-                  marginLeft: "10px",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderColor: "white",
-                  borderWidth: 2,
-                  padding: 20,
-                }
+                width: 350,
+                marginLeft: "10px",
+                justifyContent: "center",
+                alignItems: "center",
+                borderColor: "white",
+                borderWidth: 2,
+                padding: 20,
+              }
           }
         >
           <Text
@@ -111,18 +111,7 @@ const LoginScreen = () => {
               marginTop: 12,
             }}
           >
-            Forgot Password?
-          </Text>
-          <Text
-            style={{
-              textAlign: "center",
-              fontSize: 17,
-              fontWeight: "500",
-              color: "white",
-              marginTop: 12,
-            }}
-          >
-            Don't have an account?
+            Don't have an account? Sign up now
           </Text>
         </Pressable>
       </KeyboardAvoidingView>
