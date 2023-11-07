@@ -6,9 +6,10 @@ export default function App() {
 
   return (
     <>
-    <StackNavigator/>
-    <StatusBar style='light'/>
-    
+     
+        <StackNavigator />
+        <StatusBar style='light' />
+      
     </>
 
   );
