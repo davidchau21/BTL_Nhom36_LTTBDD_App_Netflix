@@ -5,12 +5,20 @@ import {
   SafeAreaView,
   Pressable,
   ScrollView,
+  Alert
 } from "react-native";
 import React, { useState } from "react";
 import { Feather } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import plans from "../data/plans";
+import { useRoute } from "@react-navigation/native";
+
+
+// import { useStripe } from "@stripe/stripe-react-native";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+// import Payment from '@react-native-payment';
 
 const PlansScreen = () => {
   const [selected, setSelected] = useState([]);
@@ -18,7 +26,77 @@ const PlansScreen = () => {
   console.log(selected);
   console.log(price);
   const data = plans;
- 
+  const route = useRoute();
+  const email = route.params.email;
+  const password = route.params.password;
+  // const stripe = useStripe();
+
+
+  // const subscribe = async() => {
+  //   const response = await fetch("http://localhost:8080/payment", {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       amount:Math.floor(price * 100),
+
+  //     }),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   const data = await response.json();
+  //   console.log(data);
+  //   if (!response.ok) return Alert.alert(data.message);
+  //   const clientSecret = data.clientSecret;
+  //   const initSheet = await stripe.initPaymentSheet({
+  //     paymentIntentClientSecret: clientSecret,
+  //   });
+  //   if (initSheet.error) return Alert.alert(initSheet.error.message);
+  //   const presentSheet = await stripe.presentPaymentSheet({
+  //     clientSecret,
+  //   });
+  //   if (presentSheet.error) return Alert.alert(presentSheet.error.message);
+
+  //   else{
+  //     createUserWithEmailAndPassword(auth,email,password).then((userCredentials) => {
+  //       console.log(userCredentials);
+  //       const user = userCredentials.user;
+  //       console.log(user.email);
+  //     })
+  //   }
+
+  // }
+  const makePayment = async () => {
+    const paymentDetails = {
+      totalAmount: price,  // Số tiền cần thanh toán
+      currencyCode: 'USD',  // Mã tiền tệ
+      countryCode: 'US',  // Mã quốc gia
+      merchantName: 'Tên cửa hàng',
+    };
+  
+    try {
+      const paymentResult = await Payment.requestPayment(paymentDetails);
+  
+      if (paymentResult.status === 'success') {
+        // Xử lý khi thanh toán thành công
+        // Ví dụ: Tạo người dùng và lưu thông tin người dùng vào Firebase
+        createUserWithEmailAndPassword(auth, email, password).then((userCredentials) => {
+          console.log(userCredentials);
+          const user = userCredentials.user;
+          console.log(user.email);
+        });
+      } else if (paymentResult.status === 'failure') {
+        // Xử lý khi thanh toán không thành công
+        Alert.alert('Payment failed');
+      } else if (paymentResult.status === 'cancel') {
+        // Xử lý khi người dùng hủy thanh toán
+        Alert.alert('Payment cancelled');
+      }
+    } catch (error) {
+      console.error(error);
+      Alert.alert('Payment error');
+    }
+  };
+
   return (
     <>
       <ScrollView>
@@ -66,7 +144,7 @@ const PlansScreen = () => {
                       height: 170,
                       borderRadius: 7,
                       borderColor: "#E50914",
-                      borderWidth: 3,
+                      borderWidth: 2,
                       padding: 15,
                       margin: 10,
                     }
@@ -162,29 +240,30 @@ const PlansScreen = () => {
           ))}
         </View>
       </ScrollView>
-      
+
       {selected.length > 0 ? (
         <Pressable
-        style={{
-          backgroundColor: "#E50914",
-          padding: 10,
-          marginBottom: 15,
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-          height: 55,
-        }}
-      >
-        <Text style={{color:"white",fontSize:17,fontWeight:"600"}}>Selected Plan: {selected}</Text>
+          style={{
+            backgroundColor: "#E50914",
+            padding: 10,
+            marginBottom: 15,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            height: 55,
+          }}
+        >
+          <Text style={{ color: "white", fontSize: 17, fontWeight: "600" }}>
+            Selected Plan: {selected}
+          </Text>
 
-        <Pressable>
-          <Text style={{fontSize:17,fontWeight:"bold",color:"white"}}>PAY: {price}$</Text>
+          <Pressable onPress={makePayment}>
+            <Text style={{ fontSize: 17, fontWeight: "bold", color: "white" }}>
+              PAY: {price}$
+            </Text>
+          </Pressable>
         </Pressable>
-      </Pressable>
-      ) : (
-        null
-      )}
-      
+      ) : null}
     </>
   );
 };
