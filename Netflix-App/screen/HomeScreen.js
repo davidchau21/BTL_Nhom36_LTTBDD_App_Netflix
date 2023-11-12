@@ -1,11 +1,22 @@
-import { View,Text } from "react-native";
-import React from "react" ;
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native'
+import React from 'react'
+import Headers from '../components/Headers'
+import TrendingComponent from '../components/TrendingComponent';
+import MoviesRows from '../components/MoviesRows';
 
-export default function HomeScreen(){
-    return(
-        <SafeAreaView className="flex-1 bg-neutral-800">
-            <Text>Home Screen</Text>
-        </SafeAreaView>
-    )
+const HomeScreen = () => {
+  console.log('Rendering HomeScreen');
+  return (
+    <ScrollView style={{flex:1,backgroundColor:"black"}}>
+      <Headers/>
+
+      <TrendingComponent/>
+
+      <MoviesRows/>
+    </ScrollView>
+  )
 }
+
+export default HomeScreen
+
+const styles = StyleSheet.create({})

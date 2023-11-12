@@ -7,15 +7,17 @@ import {
   Image,
   FlatList,
 } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigation } from "@react-navigation/native";
-
+import { MovieItems } from "../Context";
 const ProfileScreen = () => {
   const navigation = useNavigation();
-  const profiles = [
+  const {profile,setProfile} = useContext(MovieItems);
+  console.log("selected profile: ",profile)
+const profiles = [
     {
       id: "0",
       image:
@@ -41,7 +43,6 @@ const ProfileScreen = () => {
       name: "Samarth",
     },
   ];
-
   const signOutUser = () => {
     signOut(auth).then(() => {
       navigation.replace("Login");
@@ -51,9 +52,7 @@ const ProfileScreen = () => {
   }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
-      <Pressable
-        style={{ flexDirection: "row", alignItems: "center", marginTop: 10 }}
-      >
+      <Pressable style={{ flexDirection: "row", alignItems: "center" }}>
         <Ionicons name="arrow-back" size={24} color="white" />
         <Text
           style={{
@@ -66,65 +65,33 @@ const ProfileScreen = () => {
           Profiles and more
         </Text>
       </Pressable>
+
       <View style={{ alignItems: "center", justifyContent: "center" }}>
         <Image
-          style={{
-            width: 100,
-            height: 120,
-            marginTop: 20,
-            resizeMode: "contain",
-            alignSelf: "center",
-          }}
+          style={{ height: 50, width: 120, marginTop: 20 }}
           source={{
-            uri:
-              "https://brademar.com/wp-content/uploads/2022/05/Netflix-Logo-PNG.png",
+            uri: "https://brademar.com/wp-content/uploads/2022/05/Netflix-Logo-PNG.png",
           }}
         />
       </View>
 
-      <View
-        style={{
-          marginTop: 30,
-          alignItems: "center",
-          backgroundColor: "black",
-        }}
-      >
-        <Text style={{ color: "gray", fontSize: 16, fontWeight: "600" }}>
-          Who's watching?
-        </Text>
-        <FlatList
-          data={profiles}
-          numColumns={2} // Đặt số cột thành 2
-          renderItem={({ item }) => (
-            <Pressable style={{ margin: 10, padding: 20, flex: 1 }}>
-              <Image
-                style={{
-                  width: 110,
-                  height: 110,
-                  borderRadius: 7,
-                  resizeMode: "contain",
-                }}
-                source={{ uri: item.image }}
-              />
-              <Text
-                style={{
-                  textAlign: "center",
-                  color: "white",
-                  fontSize: 15,
-                  fontWeight: "500",
-                  marginTop: 10,
-                }}
-              >
-                {item.name}
-              </Text>
-            </Pressable>
-          )}
-          keyExtractor={(item, index) => index.toString()}
-        />
+      <View style={{marginTop:50,alignItems:"center"}}>
+        <Text style={{color:"gray",fontSize:16,fontWeight:"600"}}>Who's Watching?</Text>
+
+        <FlatList numColumns={2} data={profiles} renderItem={({item}) => (
+          <Pressable onPress={() => {
+            setProfile(item);
+            navigation.navigate("Loading");
+          }}
+           style={{marginHorizontal:10,padding:20,marginTop:10}}>
+            <Image style={{width:110,height:110,borderRadius:7,resizeMode:"contain"}} source={{uri:item.image}}/>
+            <Text style={{textAlign:"center",color:"white",fontSize:15,fontWeight:"500",marginTop:10}}>{item.name}</Text>
+          </Pressable>
+        )}/>
       </View>
 
       <Pressable onPress={signOutUser}>
-        <Text style={{fontSize:16, textAlign:"center", color:"gray", marginTop:15}}>Sign Out</Text>
+        <Text style={{fontSize:18,textAlign:"center",color:"gray",marginTop:15}}>Sign Out</Text>
       </Pressable>
     </SafeAreaView>
   );
