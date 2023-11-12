@@ -1,13 +1,19 @@
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native'
 import React from 'react'
 import Headers from '../components/Headers'
+import TrendingComponent from '../components/TrendingComponent';
+import MoviesRows from '../components/MoviesRows';
 
 const HomeScreen = () => {
   console.log('Rendering HomeScreen');
   return (
-    <SafeAreaView style={{flex:1,backgroundColor:"black"}}>
+    <ScrollView style={{flex:1,backgroundColor:"black"}}>
       <Headers/>
-    </SafeAreaView>
+
+      <TrendingComponent/>
+
+      <MoviesRows/>
+    </ScrollView>
   )
 }
 

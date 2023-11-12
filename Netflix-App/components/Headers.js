@@ -65,6 +65,9 @@ const Header = () => {
                 height: 30,
                 marginRight: 10,
                 borderRadius: 5,
+                borderWidth: 2,
+                borderColor: "white",
+               
               }}
               source={{ uri: profile.image }}
             />
