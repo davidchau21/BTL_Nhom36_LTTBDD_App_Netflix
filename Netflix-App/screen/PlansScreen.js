@@ -13,6 +13,7 @@ import { Fontisto } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import plans from "../data/plans";
 import { useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 
 // import { useStripe } from "@stripe/stripe-react-native";
@@ -30,41 +31,41 @@ const PlansScreen = () => {
   const email = route.params.email;
   const password = route.params.password;
   // const stripe = useStripe();
+  const navigation = useNavigation();
 
+  const subscribe = async() => {
+    const response = await fetch("http://localhost:8080/payment", {
+      method: "POST",
+      body: JSON.stringify({
+        amount:Math.floor(price * 100),
 
-  // const subscribe = async() => {
-  //   const response = await fetch("http://localhost:8080/payment", {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       amount:Math.floor(price * 100),
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+    if (!response.ok) return Alert.alert(data.message);
+    const clientSecret = data.clientSecret;
+    const initSheet = await stripe.initPaymentSheet({
+      paymentIntentClientSecret: clientSecret,
+    });
+    if (initSheet.error) return Alert.alert(initSheet.error.message);
+    const presentSheet = await stripe.presentPaymentSheet({
+      clientSecret,
+    });
+    if (presentSheet.error) return Alert.alert(presentSheet.error.message);
 
-  //     }),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   const data = await response.json();
-  //   console.log(data);
-  //   if (!response.ok) return Alert.alert(data.message);
-  //   const clientSecret = data.clientSecret;
-  //   const initSheet = await stripe.initPaymentSheet({
-  //     paymentIntentClientSecret: clientSecret,
-  //   });
-  //   if (initSheet.error) return Alert.alert(initSheet.error.message);
-  //   const presentSheet = await stripe.presentPaymentSheet({
-  //     clientSecret,
-  //   });
-  //   if (presentSheet.error) return Alert.alert(presentSheet.error.message);
+    else{
+      createUserWithEmailAndPassword(auth,email,password).then((userCredentials) => {
+        console.log(userCredentials);
+        const user = userCredentials.user;
+        console.log(user.email);
+      })
+    }
 
-  //   else{
-  //     createUserWithEmailAndPassword(auth,email,password).then((userCredentials) => {
-  //       console.log(userCredentials);
-  //       const user = userCredentials.user;
-  //       console.log(user.email);
-  //     })
-  //   }
-
-  // }
+  }
   const makePayment = async () => {
     const paymentDetails = {
       totalAmount: price,  // Số tiền cần thanh toán
@@ -256,8 +257,11 @@ const PlansScreen = () => {
           <Text style={{ color: "white", fontSize: 17, fontWeight: "600" }}>
             Selected Plan: {selected}
           </Text>
-
-          <Pressable onPress={makePayment}>
+          {/* Tạm thời chưa xử lý được thanh toán */}
+          <Pressable onPress={() => {
+            // subscribe();
+           navigation.navigate("Profile")
+          }}>
             <Text style={{ fontSize: 17, fontWeight: "bold", color: "white" }}>
               PAY: {price}$
             </Text>

@@ -2,63 +2,66 @@ import {
   StyleSheet,
   Text,
   View,
+  Pressable,
+  Image,
   SafeAreaView,
   KeyboardAvoidingView,
-  Image,
-  Pressable,
 } from "react-native";
 import React, { useState } from "react";
-import { Input } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
+import { Input } from "react-native-elements";
 
 const RegisterScreen = () => {
   const [input, setInput] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "black", padding: 10 }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: "black",
+        padding: 10,
+        alignItems: "center",
+      }}
+    >
       <KeyboardAvoidingView>
         <View style={{ alignItems: "center", justifyContent: "space-between" }}>
           <Image
-            style={{
-              width: 100,
-              height: 120,
-              marginTop: -30,
-              resizeMode: "contain",
-              alignSelf: "center",
-            }}
+            style={{ height: 50, width: 120, marginTop: 20 }}
             source={{
-              uri: "https://brademar.com/wp-content/uploads/2022/05/Netflix-Logo-PNG.png",
+              uri: "https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png",
             }}
           />
         </View>
-        <View style={{ width: 370, marginTop: 50 }}>
+
+        <View style={{ width: 320, marginTop: 45 }}>
           <Input
             value={input}
             onChangeText={(text) => setInput(text)}
             type="email"
             inputContainerStyle={{ borderBottomWidth: 0 }}
             placeholder="Email"
-            placeholderTextColor="white"
+            placeholderTextColor={"white"}
             style={{
               width: 330,
-              padding: 20,
+              padding: 15,
               borderRadius: 5,
               color: "white",
               backgroundColor: "gray",
             }}
           />
+
           <Input
             value={password}
             onChangeText={(text) => setPassword(text)}
             type="password"
-            secureTextEntry="true"
+            secureTextEntry={true}
             inputContainerStyle={{ borderBottomWidth: 0 }}
             placeholder="Password"
-            placeholderTextColor="white"
+            placeholderTextColor={"white"}
             style={{
               width: 330,
-              padding: 20,
+              padding: 15,
               borderRadius: 5,
               color: "white",
               backgroundColor: "gray",
@@ -67,29 +70,33 @@ const RegisterScreen = () => {
         </View>
 
         <Pressable
-        disabled={input && !password}
-        onPress={() => navigation.navigate("Plan", {
-          email: input,
-          password: password,
-        })}
+        disabled={!input && !password}
+          onPress={() =>
+            navigation.navigate("Plan", {
+              email: input,
+              password: password,
+            })
+          }
           style={
             password.length > 4
               ? {
+                  width: 300,
                   backgroundColor: "red",
-                  width: 350,
-                  marginLeft: "10px",
+                  marginLeft: "auto",
+                  marginRight: "auto",
                   justifyContent: "center",
                   alignItems: "center",
-                  padding: 20,
+                  padding: 14,
                 }
               : {
-                  width: 350,
-                  marginLeft: "10px",
+                  width: 300,
+                  marginLeft: "auto",
+                  marginRight: "auto",
                   justifyContent: "center",
                   alignItems: "center",
                   borderColor: "white",
                   borderWidth: 2,
-                  padding: 20,
+                  padding: 14,
                 }
           }
         >
