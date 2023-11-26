@@ -52,24 +52,6 @@ const profiles = [
   }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
-<<<<<<< HEAD
-      {/* <Pressable style={{ flexDirection: "row", alignItems: "center" }}>
-        <Ionicons name="arrow-back" size={24} color="white" />
-        <Text
-          style={{
-            color: "white",
-            fontSize: 20,
-            fontWeight: "500",
-            marginLeft: 6,
-          }}
-        >
-          Profiles and more
-        </Text>
-      </Pressable> */}
-=======
-
->>>>>>> 96405c542f078f9e0a0000302a4bf878e5bc3263
-
       <View style={{ alignItems: "center", justifyContent: "center" }}>
         <Image
           style={{ height: 50, width: 120, marginTop: 20 }}

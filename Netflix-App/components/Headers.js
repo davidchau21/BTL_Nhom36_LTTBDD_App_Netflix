@@ -9,8 +9,10 @@ import {
 import React, { useContext, useEffect, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const Header = () => {
+  const navigation = useNavigation();
   const API_KEY = "b93a64480573ce5248c28b200d79d029";
   const [movies, setMovies] = useState([]);
   useEffect(() => {
@@ -29,7 +31,6 @@ const Header = () => {
   }, []);
   return (
     <View>
-<<<<<<< HEAD
       <Pressable onPress={() => {navigation.navigate('PlayVideo')}}>
       <ImageBackground
         style={{ width: "100%", height: 480, position: "relative" }}
@@ -37,44 +38,7 @@ const Header = () => {
           uri: `https://image.tmdb.org/t/p/original/${movies?.poster_path}`,
         }}
       >
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <Image
-            style={{ height: 50, width: 120 }}
-            source={{
-              uri: "https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png",
-            }}
-          />
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <AntDesign
-              style={{ marginRight: 10 }}
-              name="search1"
-              size={24}
-              color="white"
-            />
-            <Pressable onPress={() => navigation.navigate("Profile")}>
-            <Image
-              style={{
-                width: 30,
-                height: 30,
-                marginRight: 10,
-                borderRadius: 5,
-               
-              }}
-              source={{ uri: profile.image }}
-            />
-            </Pressable>
-          
-          </View>
-        </View>
-=======
-      <View style={{  backgroundColor: 'rgba(85,85,85,0.4)',  }}>
->>>>>>> 96405c542f078f9e0a0000302a4bf878e5bc3263
+      <View style={{  backgroundColor: 'rgba(85,85,85,0.4)'  }}>
         <View
           style={{
             flexDirection: "row",
@@ -104,18 +68,9 @@ const Header = () => {
             Categories
           </Text>
         </View>
-<<<<<<< HEAD
+       </View> 
       </ImageBackground>
       </Pressable>
-=======
-      </View>
-      <ImageBackground
-        style={{ width: "100%", height: 480 }}
-        source={{
-          uri: `https://image.tmdb.org/t/p/original/${movies?.poster_path}`,
-        }}
-      ></ImageBackground>
->>>>>>> 96405c542f078f9e0a0000302a4bf878e5bc3263
       <View
         style={{
           flexDirection: "row",
