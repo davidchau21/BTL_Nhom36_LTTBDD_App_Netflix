@@ -8,12 +8,9 @@ import {
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
-import { MovieItems } from "../Context";
 import { Entypo } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+
 const Header = () => {
-  const { profile, setProfile } = useContext(MovieItems);
-  const navigation = useNavigation();
   const API_KEY = "b93a64480573ce5248c28b200d79d029";
   const [movies, setMovies] = useState([]);
   useEffect(() => {
@@ -32,6 +29,7 @@ const Header = () => {
   }, []);
   return (
     <View>
+<<<<<<< HEAD
       <Pressable onPress={() => {navigation.navigate('PlayVideo')}}>
       <ImageBackground
         style={{ width: "100%", height: 480, position: "relative" }}
@@ -74,13 +72,16 @@ const Header = () => {
           
           </View>
         </View>
+=======
+      <View style={{  backgroundColor: 'rgba(85,85,85,0.4)',  }}>
+>>>>>>> 96405c542f078f9e0a0000302a4bf878e5bc3263
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "center",
             width: "80%",
-            margin: 20,
+            margin: 15,
             paddingLeft: 20,
           }}
         >
@@ -103,8 +104,18 @@ const Header = () => {
             Categories
           </Text>
         </View>
+<<<<<<< HEAD
       </ImageBackground>
       </Pressable>
+=======
+      </View>
+      <ImageBackground
+        style={{ width: "100%", height: 480 }}
+        source={{
+          uri: `https://image.tmdb.org/t/p/original/${movies?.poster_path}`,
+        }}
+      ></ImageBackground>
+>>>>>>> 96405c542f078f9e0a0000302a4bf878e5bc3263
       <View
         style={{
           flexDirection: "row",
@@ -120,7 +131,14 @@ const Header = () => {
             size={24}
             color="white"
           />
-          <Text style={{ fontSize: 17, fontWeight: "bold", color: "white",marginTop:3 }}>
+          <Text
+            style={{
+              fontSize: 17,
+              fontWeight: "bold",
+              color: "white",
+              marginTop: 3,
+            }}
+          >
             My List
           </Text>
         </View>
@@ -129,9 +147,9 @@ const Header = () => {
           style={{
             backgroundColor: "white",
             padding: 8,
-            width:120,
-            justifyContent:"center",
-            alignItems:"center",
+            width: 120,
+            justifyContent: "center",
+            alignItems: "center",
             borderRadius: 6,
             flexDirection: "row",
             alignItems: "center",
@@ -151,7 +169,14 @@ const Header = () => {
             size={24}
             color="white"
           />
-          <Text style={{ fontSize: 17, fontWeight: "bold", color: "white",marginTop:3 }}>
+          <Text
+            style={{
+              fontSize: 17,
+              fontWeight: "bold",
+              color: "white",
+              marginTop: 3,
+            }}
+          >
             Info
           </Text>
         </View>
