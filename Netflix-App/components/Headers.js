@@ -32,6 +32,7 @@ const Header = () => {
   }, []);
   return (
     <View>
+      <Pressable onPress={() => {navigation.navigate('PlayVideo')}}>
       <ImageBackground
         style={{ width: "100%", height: 480, position: "relative" }}
         source={{
@@ -83,9 +84,11 @@ const Header = () => {
             paddingLeft: 20,
           }}
         >
+          <Pressable onPress={()=>{navigation.navigate('TVShow')}}>
           <Text style={{ fontSize: 17, fontWeight: "bold", color: "white" }}>
             TV shows
           </Text>
+          </Pressable>
           <Text
             style={{
               fontSize: 17,
@@ -101,6 +104,7 @@ const Header = () => {
           </Text>
         </View>
       </ImageBackground>
+      </Pressable>
       <View
         style={{
           flexDirection: "row",
@@ -121,7 +125,7 @@ const Header = () => {
           </Text>
         </View>
 
-        <View
+        <Pressable
           style={{
             backgroundColor: "white",
             padding: 8,
@@ -132,12 +136,13 @@ const Header = () => {
             flexDirection: "row",
             alignItems: "center",
           }}
+          onPress={() => navigation.navigate("PlayVideo")}
         >
           <Entypo name="controller-play" size={24} color="black" />
           <Text style={{ fontSize: 17, fontWeight: "bold", color: "black" }}>
             Play
           </Text>
-        </View>
+        </Pressable>
 
         <View>
           <AntDesign

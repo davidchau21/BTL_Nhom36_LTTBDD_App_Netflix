@@ -20,6 +20,7 @@ import { useNavigation } from "@react-navigation/native";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 // import Payment from '@react-native-payment';
+import RNPayment from 'react-native-payment';
 
 const PlansScreen = () => {
   const [selected, setSelected] = useState([]);
@@ -33,68 +34,94 @@ const PlansScreen = () => {
   // const stripe = useStripe();
   const navigation = useNavigation();
 
-  const subscribe = async() => {
+  // const subscribe = async() => {
+  //   const response = await fetch("http://localhost:8080/payment", {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       amount:Math.floor(price * 100),
+
+  //     }),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   const data = await response.json();
+  //   console.log(data);
+  //   if (!response.ok) return Alert.alert(data.message);
+  //   const clientSecret = data.clientSecret;
+  //   const initSheet = await stripe.initPaymentSheet({
+  //     paymentIntentClientSecret: clientSecret,
+  //   });
+  //   if (initSheet.error) return Alert.alert(initSheet.error.message);
+  //   const presentSheet = await stripe.presentPaymentSheet({
+  //     clientSecret,
+  //   });
+  //   if (presentSheet.error) return Alert.alert(presentSheet.error.message);
+
+  //   else{
+  //     createUserWithEmailAndPassword(auth,email,password).then((userCredentials) => {
+  //       console.log(userCredentials);
+  //       const user = userCredentials.user;
+  //       console.log(user.email);
+  //     })
+  //   }
+
+  // }
+
+  const subscribe = async () => {
     const response = await fetch("http://localhost:8080/payment", {
       method: "POST",
       body: JSON.stringify({
-        amount:Math.floor(price * 100),
-
+        amount: Math.floor(price * 100),
       }),
       headers: {
         "Content-Type": "application/json",
       },
     });
+  
     const data = await response.json();
     console.log(data);
-    if (!response.ok) return Alert.alert(data.message);
-    const clientSecret = data.clientSecret;
-    const initSheet = await stripe.initPaymentSheet({
-      paymentIntentClientSecret: clientSecret,
-    });
-    if (initSheet.error) return Alert.alert(initSheet.error.message);
-    const presentSheet = await stripe.presentPaymentSheet({
-      clientSecret,
-    });
-    if (presentSheet.error) return Alert.alert(presentSheet.error.message);
-
-    else{
-      createUserWithEmailAndPassword(auth,email,password).then((userCredentials) => {
-        console.log(userCredentials);
-        const user = userCredentials.user;
-        console.log(user.email);
-      })
+  
+    if (!response.ok) {
+      return Alert.alert(data.message);
     }
-
-  }
-  const makePayment = async () => {
-    const paymentDetails = {
-      totalAmount: price,  // Số tiền cần thanh toán
-      currencyCode: 'USD',  // Mã tiền tệ
-      countryCode: 'US',  // Mã quốc gia
-      merchantName: 'Tên cửa hàng',
-    };
   
+    const clientSecret = data.clientSecret;
+  
+    // Sử dụng react-native-payment thay vì stripe
     try {
-      const paymentResult = await Payment.requestPayment(paymentDetails);
+      const paymentResult = await RNPayment.paymentRequestWithCardForm();
+      console.log(paymentResult);
   
-      if (paymentResult.status === 'success') {
-        // Xử lý khi thanh toán thành công
-        // Ví dụ: Tạo người dùng và lưu thông tin người dùng vào Firebase
+      if (paymentResult && paymentResult.status === 'success') {
+        // Xử lý thanh toán thành công
+        // Tạo người dùng sau khi thanh toán thành công
         createUserWithEmailAndPassword(auth, email, password).then((userCredentials) => {
           console.log(userCredentials);
           const user = userCredentials.user;
           console.log(user.email);
+          navigation.navigate("Profile")
         });
-      } else if (paymentResult.status === 'failure') {
-        // Xử lý khi thanh toán không thành công
-        Alert.alert('Payment failed');
-      } else if (paymentResult.status === 'cancel') {
-        // Xử lý khi người dùng hủy thanh toán
-        Alert.alert('Payment cancelled');
+      } else {
+        // Xử lý thanh toán thất bại hoặc người dùng hủy bỏ
+        Alert.alert('Payment failed or canceled');
       }
     } catch (error) {
       console.error(error);
-      Alert.alert('Payment error');
+      Alert.alert('Error during payment process');
+    }
+  };
+
+  const createAccountAfterPayment = async (email, password, navigation) => {
+    try {
+      const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+      console.log(userCredentials);
+      const user = userCredentials.user;
+      console.log(user.email);
+      navigation.navigate("Profile");
+    } catch (error) {
+      console.error(error);
+      Alert.alert('Error creating user account');
     }
   };
 
@@ -260,7 +287,8 @@ const PlansScreen = () => {
           {/* Tạm thời chưa xử lý được thanh toán */}
           <Pressable onPress={() => {
             // subscribe();
-           navigation.navigate("Profile")
+            createAccountAfterPayment(email, password, navigation);
+          //  navigation.navigate("Profile")
           }}>
             <Text style={{ fontSize: 17, fontWeight: "bold", color: "white" }}>
               PAY: {price}$

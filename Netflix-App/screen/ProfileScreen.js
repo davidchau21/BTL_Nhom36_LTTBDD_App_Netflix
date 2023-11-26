@@ -52,7 +52,7 @@ const profiles = [
   }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
-      <Pressable style={{ flexDirection: "row", alignItems: "center" }}>
+      {/* <Pressable style={{ flexDirection: "row", alignItems: "center" }}>
         <Ionicons name="arrow-back" size={24} color="white" />
         <Text
           style={{
@@ -64,7 +64,7 @@ const profiles = [
         >
           Profiles and more
         </Text>
-      </Pressable>
+      </Pressable> */}
 
       <View style={{ alignItems: "center", justifyContent: "center" }}>
         <Image

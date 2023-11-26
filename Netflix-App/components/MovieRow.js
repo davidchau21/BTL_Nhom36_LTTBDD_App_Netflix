@@ -7,8 +7,10 @@ import {
     Image,
   } from "react-native";
   import React, { useEffect, useState } from "react";
+  import { useNavigation } from "@react-navigation/native";
   
   const MovieRow = ({ title, url }) => {
+    const navigation = useNavigation();
     console.log(url);
     const API_KEY = "b93a64480573ce5248c28b200d79d029";
     const [movies, setMovies] = useState([]);
@@ -22,10 +24,10 @@ import {
     }, []);
     return (
       <View>
-          <Text style={{fontSize:19,fontWeight:"bold",color:"white"}}>{title}</Text>
+        <Text style={{fontSize:19,fontWeight:"bold",color:"white"}}>{title}</Text>
         <ScrollView horizontal showsVerticalScrollIndicator={false}>
           {movies.map((movie, id) => (
-            <Pressable>
+            <Pressable onPress={()=>{navigation.navigate("PlayVideo")}}>
               <Image
                 style={{
                   width: 105,
