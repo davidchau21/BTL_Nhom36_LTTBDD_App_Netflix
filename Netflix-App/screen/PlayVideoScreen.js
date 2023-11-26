@@ -51,10 +51,10 @@ const PlayVideoScreen = () => {
         paddingHorizontal: 16,
         paddingVertical: 12,
       }}>
-        <View style={{ marginLeft: 10 }}>
+        <View style={{ marginLeft: 5 }}>
           <AntDesign name="arrowleft" size={24} color="white" onPress={() => { navigation.goBack() }} />
         </View>
-        <View style={{ marginRight: 10 }}>
+        <View style={{ marginRight: 5 }}>
           <Ionicons name="search" size={24} color="white" />
         </View>
       </View>

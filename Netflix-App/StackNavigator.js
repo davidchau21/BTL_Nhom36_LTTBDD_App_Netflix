@@ -12,6 +12,7 @@ import PlayVideoScreen from './screen/PlayVideoScreen';
 import TVShowScreen from './screen/TVShowScreen';
 import TabNavigator from "./TabNavigator";
 import SearchScreen from "./screen/SearchScreen";
+import MovieScreen from "./screen/MovieScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,7 @@ const StackNavigator = () => {
         <Stack.Screen name="PlayVideo" component={PlayVideoScreen} options={{ headerShown: false}} />
         <Stack.Screen name="TVShow" component={TVShowScreen} options={{ headerShown: false}} />
         <Stack.Screen name="SearchHome" component={SearchScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Movies" component={MovieScreen} options={{ headerShown: false }} />
         
       </Stack.Navigator>
     </NavigationContainer>

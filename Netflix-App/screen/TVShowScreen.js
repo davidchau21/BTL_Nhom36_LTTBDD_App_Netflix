@@ -1,17 +1,12 @@
 import { StyleSheet, ScrollView } from 'react-native'
 import React from 'react'
-import Headers from '../components/Headers'
-import TrendingComponent from '../components/TrendingComponent';
 import MoviesRows from '../components/MoviesRows';
+import Headers2 from '../components/Headers2';
 
 const TVShow = () => {
   return (
-    <ScrollView style={{flex:1,backgroundColor:"black"}}>
-      
-      <Headers/>
-
-      <TrendingComponent/>
-
+    <ScrollView style={{flex:1,backgroundColor:"black"}}>  
+      <Headers2/>
       <MoviesRows/>
     </ScrollView>
   )

@@ -54,6 +54,8 @@ const Header = () => {
             TV shows
           </Text>
           </Pressable>
+
+          <Pressable onPress={() => {navigation.navigate('Movies')}}>
           <Text
             style={{
               fontSize: 17,
@@ -64,6 +66,7 @@ const Header = () => {
           >
             Movies
           </Text>
+          </Pressable>
           <Text style={{ fontSize: 17, fontWeight: "bold", color: "white" }}>
             Categories
           </Text>
