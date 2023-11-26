@@ -26,12 +26,19 @@ const Headers2 = () => {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
-          marginTop: 10,
+          marginTop: 13,
         }}
       >
-        <Pressable 
-        onPress={() => { navigation.goBack() }}
-        style={{ flexDirection: "row", alignItems: "center" }}>
+        <Pressable
+          onPress={() => {
+            navigation.goBack();
+          }}
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            paddingLeft: 10,
+          }}
+        >
           <Ionicons name="arrow-back" size={24} color="white" />
           <Text
             style={{
@@ -39,6 +46,7 @@ const Headers2 = () => {
               fontSize: 20,
               fontWeight: "500",
               marginLeft: 6,
+              paddingLeft: 5,
             }}
           >
             TV Show
@@ -52,18 +60,6 @@ const Headers2 = () => {
               name="search1"
               size={24}
               color="white"
-            />
-          </Pressable>
-
-          <Pressable onPress={() => navigation.navigate("Profile")}>
-            <Image
-              style={{
-                width: 30,
-                height: 30,
-                marginRight: 10,
-                borderRadius: 5,
-              }}
-              source={{ uri: profile.image }}
             />
           </Pressable>
         </View>

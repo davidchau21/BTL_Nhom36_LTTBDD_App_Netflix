@@ -26,14 +26,14 @@ export default function Headers3() {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
-          marginTop: 10,
+          marginTop: 13,
         }}
       >
         <Pressable
           onPress={() => {
             navigation.goBack();
           }}
-          style={{ flexDirection: "row", alignItems: "center" }}
+          style={{ flexDirection: "row", alignItems: "center" ,  paddingLeft: 10,}}
         >
           <Ionicons name="arrow-back" size={24} color="white" />
           <Text
@@ -55,18 +55,6 @@ export default function Headers3() {
               name="search1"
               size={24}
               color="white"
-            />
-          </Pressable>
-
-          <Pressable onPress={() => navigation.navigate("Profile")}>
-            <Image
-              style={{
-                width: 30,
-                height: 30,
-                marginRight: 10,
-                borderRadius: 5,
-              }}
-              source={{ uri: profile.image }}
             />
           </Pressable>
         </View>
