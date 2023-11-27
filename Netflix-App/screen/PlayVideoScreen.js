@@ -5,7 +5,7 @@ import { Video } from "expo-av";
 import { Entypo } from "@expo/vector-icons";
 import { Ionicons, AntDesign } from '@expo/vector-icons';
 import dataMovies from "../data/dataMovies";
-import MoviesRows from "../components/MoviesRows";
+import MyLists from "../components/MyLists";
 
 const PlayVideoScreen = () => {
   const navigation = useNavigation();
@@ -149,16 +149,19 @@ const PlayVideoScreen = () => {
             alignItems: "center",
             justifyContent: "space-around",
             marginTop: 15,
+            borderBottomColor: "gray",
+            borderBottomWidth: 1,
+           
           }}
         >
-          <View>
+          <View style={{marginBottom:15}}>
             <AntDesign
-              style={{ textAlign: "center" }}
+              style={{ textAlign: "center"}}
               name="plus"
               size={24}
               color="white"
             />
-            <Text style={{ fontSize: 17, fontWeight: "bold", color: "white", marginTop: 3 }}>
+            <Text style={{ fontSize: 17, fontWeight: "bold", color: "white", marginTop: 3, borderBottomColor: "red", borderBottomWidth: 2 }}>
               My List
             </Text>
           </View>
@@ -167,7 +170,6 @@ const PlayVideoScreen = () => {
             style={{
               textAlign: "center",
             }}
-            // onPress={() => navigation.navigate("PlayVideo")}
           >
             <AntDesign name="like2" size={24} color="white" />
             <Text style={{ fontSize: 17, fontWeight: "bold", color: "white" }}>
@@ -189,7 +191,8 @@ const PlayVideoScreen = () => {
         </View>
 
         <Pressable style={{marginTop:10}} onPress={() => { navigation.navigate('PlayVideo') }}>
-          <MoviesRows />
+          <Text style={{fontSize: 20, color:'white'}}>Similar content</Text>
+          <MyLists/>
         </Pressable>
       </ScrollView>
     </View>
