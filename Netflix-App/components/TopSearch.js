@@ -40,8 +40,12 @@ const TopSearch = () => {
             }}
           />
           <View style={styles.movieInfo}>
-            <Text style={styles.movieTitle}>{movie?.original_title}</Text>
-            <Ionicons name="play-circle" size={30} color="white" style={{ marginLeft: 15 }}/>
+            <View style={{ flexDirection: 'column' }}>
+              <Text style={styles.movieTitle}>{movie?.original_title}</Text>
+              <Text style={{ fontSize:18, color: 'white' }}>Date: {movie?.release_date}</Text>
+              <Text style={{ fontSize:18, color: 'white' }}>Sub: {movie?.original_language}</Text>
+            </View>
+            <Ionicons name="play-circle" size={30} color="white" style={{ marginLeft: 15 }} />
           </View>
         </Pressable>
       ))}
@@ -69,12 +73,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#424242',
     padding: 10,
     borderRadius: 6,
-    flexDirection:'row',
-    justifyContent:'space-between'
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   movieTitle: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 20,
+    fontWeight: 'bold',
+    fontStyle: 'italic'
   },
 });
 
