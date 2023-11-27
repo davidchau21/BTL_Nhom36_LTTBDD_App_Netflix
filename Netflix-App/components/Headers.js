@@ -82,6 +82,8 @@ const Header = () => {
           marginTop: 15,
         }}
       >
+        <Pressable onPress={() => navigation.navigate("ListScreen")}>
+          
         <View>
           <AntDesign
             style={{ textAlign: "center" }}
@@ -100,6 +102,7 @@ const Header = () => {
             My List
           </Text>
         </View>
+        </Pressable>
 
         <Pressable
           style={{

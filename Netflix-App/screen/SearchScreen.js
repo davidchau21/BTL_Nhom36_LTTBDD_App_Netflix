@@ -10,7 +10,8 @@ import {
   Image,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import MovieRows from "../components/MoviesRows";
+import MyLists from "../components/MyLists";
+import TopSearch from "../components/TopSearch";
 
 export default function SearchScreen({ navigation }) {
   const [searchText, setSearchText] = useState("");
@@ -28,46 +29,47 @@ export default function SearchScreen({ navigation }) {
       style={{ flex: 1, backgroundColor: "black" }}
       stickyHeaderIndices={[0]}
     >
-      <View style={{backgroundColor:'black', height:99 }}>
+      <View style={{ backgroundColor: "black", height: 99 }}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
-          style={{ marginTop: 10, marginLeft: 10,backgroundColor:"black" }}
+          style={{ marginTop: 10, marginLeft: 10, backgroundColor: "black" }}
         >
           <Ionicons name="arrow-back" size={30} color="#ffffff" />
         </TouchableOpacity>
         <View>
-        <View style={{ marginTop: 30,}}>
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={[
-                styles.input,
-                { color: isFocused ? "#ffffff" : "#141414" },
-              ]}
-              placeholder="Search for a show, movie, genre, e.t.c."
-              placeholderTextColor="#141414"
-              value={searchText}
-              onChangeText={(text) => setSearchText(text)}
-              onFocus={handleInputFocus}
-              onBlur={handleInputBlur}
-            />
-            <Ionicons
-              name="search"
-              size={30}
-              color="#ffffff"
-              style={{ position: "absolute", left: 10 }}
-            />
-            <Ionicons
-              name="mic-outline"
-              size={30}
-              color="#ffffff"
-              style={{ position: "absolute", paddingRight: 15 }}
-            />
+          <View style={{ marginTop: 30 }}>
+            <View style={styles.inputContainer}>
+              <TextInput
+                style={[
+                  styles.input,
+                  { color: isFocused ? "#ffffff" : "#141414" },
+                ]}
+                placeholder="Search for a show, movie, genre, e.t.c."
+                placeholderTextColor="#141414"
+                value={searchText}
+                onChangeText={(text) => setSearchText(text)}
+                onFocus={handleInputFocus}
+                onBlur={handleInputBlur}
+              />
+              <Ionicons
+                name="search"
+                size={30}
+                color="#ffffff"
+                style={{ position: "absolute", left: 10 }}
+              />
+              <Ionicons
+                name="mic-outline"
+                size={30}
+                color="#ffffff"
+                style={{ position: "absolute", paddingRight: 15 }}
+              />
+            </View>
           </View>
         </View>
       </View>
-      </View>
       <View style={{ marginTop: 12 }}>
-        <MovieRows />
+        {/* <MyLists /> */}
+        <TopSearch />
       </View>
     </ScrollView>
   );
