@@ -40,7 +40,7 @@ const TopSearch = () => {
             }}
           />
           <View style={styles.movieInfo}>
-            <Text style={styles.movieTitle}>{movie?.title}</Text>
+            <Text style={styles.movieTitle}>{movie?.original_title}</Text>
             <Ionicons name="play-circle" size={30} color="white" style={{ marginLeft: 15 }}/>
           </View>
         </Pressable>

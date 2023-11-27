@@ -15,7 +15,7 @@ export default [
         subtitle: "By Blender Foundation",
         thumb: "https://www.elle.vn/wp-content/uploads/2021/12/31/462947/ngang-poster-the-silent-sea-netflix.jpg",
         title: "Elephant Dream",
-        time: "2015 13+ 1m30s"
+        time: "2016 18+ 1h30"
     },
     {
         id:"2",
@@ -24,7 +24,7 @@ export default [
         subtitle: "By Google",
         thumb: "https://ss-images.saostar.vn/w800/pc/1610620965545/o-ae-oe-o-o.jpg",
         title: "For Bigger Blazes",
-        time: "2015 13+ 1m30s"
+        time: "2023 18+ 2h30s"
     },
     {
         id:"3",
@@ -33,7 +33,7 @@ export default [
         subtitle: "By Google",
         thumb: "https://nhn.1cdn.vn/thumbs/1200x630/2023/06/17/harper-bazaar-review-phim-cho-san-cong-ly-bloodhounds-7.jpg",
         title: "For Bigger Escape",
-        time: "2015 13+ 1m30s"
+        time: "2022 15+ 2h50"
     },
     {
         id:"4",
@@ -42,7 +42,7 @@ export default [
         subtitle: "By Google",
         thumb: "https://kenh14cdn.com/zoom/320_200/203336854389633024/2021/6/8/photo1623166958326-16231669588431719170311.jpg",
         title: "For Bigger Fun",
-        time: "2015 13+ 1m30s"
+        time: "2021 13+ 1h30"
     },
     {
         id:"5",
@@ -51,7 +51,7 @@ export default [
         subtitle: "By Google",
         thumb: "https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2022/7/20/1070521/8A6a68144592045.628E.jpg",
         title: "For Bigger Joyrides",
-        time: "2015 13+ 1m30s"
+        time: "2020 16+ 1h20"
     },
     {
         id:"6",
@@ -60,7 +60,7 @@ export default [
         subtitle: "By Google",
         thumb: "https://ss-images.saostar.vn/wp700/2020/02/06/6937013/eqdrva5ueaah4_9.jpg",
         title: "For Bigger Meltdowns",
-        time: "2015 13+ 1m30s"
+        time: "2019 13+ 1m30s"
     },
     {
         id:"7",
@@ -69,7 +69,7 @@ export default [
         subtitle: "By Blender Foundation",
         thumb: "https://cdn.tgdd.vn/Files/2023/08/16/1542889/z4607573637189_6e12acdc25a465ef3b280a433c53e791copy-160823-125816.jpg",
         title: "Sintel",
-        time: "2015 13+ 1m30s"
+        time: "2018 18+ 2h48"
     },
     {
         id:"8",
@@ -78,7 +78,7 @@ export default [
         subtitle: "By Garage419",
         thumb: "https://cdn.oneesports.vn/cdn-data/sites/4/2023/01/OnePiece-Netflix.jpg",
         title: "Subaru Outback On Street And Dirt",
-        time: "2015 13+ 1m30s"
+        time: "2017 13+ 1h30m"
     },
     {
         id:"9",
@@ -87,7 +87,7 @@ export default [
         subtitle: "By Blender Foundation",
         thumb: "https://thethaovanhoa.mediacdn.vn/372676912336973824/2023/4/11/2-16811891634301684517312.jpg",
         title: "Tears of Steel",
-        time: "2015 13+ 1m30s"
+        time: "2016 15+ 2h"
     },
     {
         id:"10",
@@ -96,7 +96,7 @@ export default [
         subtitle: "By Garage419",
         thumb: "https://image.voh.com.vn/voh/Image/2023/02/16/VOH-phim-kinh-di-de-tai-quai-vat-moi-cua-netflix-tung-poster-moi-nhat-4.jpg?t=o",
         title: "Volkswagen GTI Review",
-        time: "2015 13+ 1m30s"
+        time: "2015 13+ 1h30m"
     },
     {
         id:"11",
@@ -105,7 +105,7 @@ export default [
         subtitle: "By Garage419",
         thumb: "https://cdnphoto.dantri.com.vn/Vqf5YcnILhCeZ4dKcdR_tmrirKU=/thumb_w/990/2021/10/04/tro-choi-con-muc-netflix-1633334195075.jpg",
         title: "We Are Going On Bullrun",
-        time: "2015 13+ 1m30s"
+        time: "2012 13+ 1h25"
     },
     {
         id:"12",
@@ -114,6 +114,6 @@ export default [
         subtitle: "By Garage419",
         thumb: "images/WhatCarCanYouGetForAGrand.jpg",
         title: "What care can you get for a grand?",
-        time: "2015 13+ 1m30s"
+        time: "2023 18+ 3h10"
     }
 ];

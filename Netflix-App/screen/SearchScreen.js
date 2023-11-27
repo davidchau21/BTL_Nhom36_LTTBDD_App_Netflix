@@ -68,7 +68,6 @@ export default function SearchScreen({ navigation }) {
         </View>
       </View>
       <View style={{ marginTop: 12 }}>
-        {/* <MyLists /> */}
         <TopSearch />
       </View>
     </ScrollView>

@@ -22,7 +22,7 @@ const PlayVideoScreen = () => {
   };
 
   const downloadVideo = () => {
-    // ... your implementation
+    
   };
 
   const playVideo = () => {
@@ -73,7 +73,7 @@ const PlayVideoScreen = () => {
             ref={_handleVideoRef}
             style={styles.video}
             usePoster={true}
-            posterStyle={{ resizeMode: "contain" }}
+            posterStyle={{ resizeMode: "cover" }}
             posterSource={{ uri: posterUrl }}
 
           />
@@ -123,7 +123,7 @@ const PlayVideoScreen = () => {
               alignItems: "center",
               marginTop: 10,
             }}
-            onPress={downloadVideo}
+            onPress={()=>{navigation.navigate('DownloadScreen')}}
           >
             <Entypo name="download" size={24} color="white" />
             <Text
@@ -190,8 +190,8 @@ const PlayVideoScreen = () => {
           </View>
         </View>
 
+        <Text style={{fontSize: 20, color:'white', marginTop:5}}>Similar content</Text>
         <Pressable style={{marginTop:10}} onPress={() => { navigation.navigate('PlayVideo') }}>
-          <Text style={{fontSize: 20, color:'white'}}>Similar content</Text>
           <MyLists/>
         </Pressable>
       </ScrollView>
