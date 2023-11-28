@@ -1,22 +1,34 @@
-import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native'
-import React from 'react'
-import Headers from '../components/Headers'
-import TrendingComponent from '../components/TrendingComponent';
-import MoviesRows from '../components/MoviesRows';
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  ScrollView,
+  Animated,
+} from "react-native";
+import React from "react";
+import Headers from "../components/Headers";
+import TrendingComponent from "../components/TrendingComponent";
+import MoviesRows from "../components/MoviesRows";
+import Headers1 from "../components/Headers1";
 
 const HomeScreen = () => {
-  console.log('Rendering HomeScreen');
   return (
-    <ScrollView style={{flex:1,backgroundColor:"black"}}>
-      <Headers/>
+    <ScrollView
+      style={{ flex: 1, backgroundColor: "black" }}
+      stickyHeaderIndices={[0]}
+    >
+      <Headers1 />
 
-      <TrendingComponent/>
+      <Headers />
 
-      <MoviesRows/>
+      <TrendingComponent />
+
+      <MoviesRows />
     </ScrollView>
-  )
-}
+  );
+};
 
-export default HomeScreen
+export default HomeScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

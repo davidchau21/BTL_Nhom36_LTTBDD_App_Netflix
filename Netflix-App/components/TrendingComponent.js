@@ -7,8 +7,10 @@ import {
     ScrollView,
   } from "react-native";
   import React, { useEffect, useState } from "react";
+  import { useNavigation } from "@react-navigation/native";
   
   const TrendingComponent = () => {
+    const navigation = useNavigation();
     const API_KEY = "b93a64480573ce5248c28b200d79d029";
     const [movies, setMovies] = useState([]);
     useEffect(() => {
@@ -26,7 +28,7 @@ import {
       <View style={{marginTop:20}}>
         <ScrollView horizontal showsVerticalScrollIndicator={false}>
           {movies.slice(0, 10).map((movie, id) => (
-            <Pressable style={{flexDirection:"row",alignItems:"center"}}>
+            <Pressable style={{flexDirection:"row",alignItems:"center"}} onPress={() => {navigation.navigate('PlayVideo')}}>
               <Text
                 style={{
                   fontSize: 85,
