@@ -1,1 +1,1 @@
-# BTL_Nhom36_LTTBDD_App_Netflix
+# React Native App Netflix
